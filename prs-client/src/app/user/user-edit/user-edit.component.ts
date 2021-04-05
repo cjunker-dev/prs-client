@@ -32,10 +32,10 @@ export class UserEditComponent implements OnInit {
   }
 
   save(): void {
-    console.log("Before change:", this.user);
+    console.log("Before edit:", this.user);
     this.usrsvc.update(this.user).subscribe(
       res => {
-        console.log("edit successful");
+        console.log("After edit:", this.user);
         this.router.navigateByUrl("/users/list");
       },
       err => {

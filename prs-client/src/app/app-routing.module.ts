@@ -10,6 +10,8 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path: 'users/create', component: UserCreateComponent},
   {path: 'vendors/list', component: VendorListComponent},
   {path: 'vendors/detail/:id', component: VendorDetailComponent},
+  {path: 'vendors/create', component: VendorCreateComponent},
+  {path: 'vendors/edit/:id', component: VendorEditComponent},
   {path: 'about', component: AboutComponent},
   {path: 'help', component: HelpComponent},
   { path: 'login', component: UserLoginComponent},

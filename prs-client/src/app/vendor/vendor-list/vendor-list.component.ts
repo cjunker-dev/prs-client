@@ -10,6 +10,7 @@ import { VendorService } from '../vendor.service';
 })
 export class VendorListComponent implements OnInit {
   vendors: Vendor[];
+  searchCriteria: string = '';
 
   constructor(
     private vdrsvc: VendorService

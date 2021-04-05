@@ -32,11 +32,16 @@ export class VendorDetailComponent implements OnInit {
     )
   }
   edit() {
-
+    this.router.navigateByUrl(`/vendors/edit/${this.id}`);
   }
 
   delete(){
-    
+    this.vdrsvc.delete(this.vendor).subscribe(
+      res => {
+        console.log("Delete successful", res);
+        this.router.navigateByUrl("vendors/list")
+      }
+    );
   }
   toggleVerify(){
     this.showVerify = !this.showVerify;

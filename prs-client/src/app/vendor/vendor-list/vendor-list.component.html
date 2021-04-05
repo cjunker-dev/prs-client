@@ -2,7 +2,7 @@
 <div>
     <h3>Vendor List</h3>
     <a routerLink="/vendors/create">Create a Vendor</a> |
-    <input type="text" placeholder="Search">
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
     <table class="table table-sm table-striped">
         <thead>
             <tr>
@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let v of vendors">
+            <tr *ngFor="let v of vendors | searchVendor: searchCriteria">
                 <td>{{v.id}}</td>
                 <td>{{v.code}}</td>
                 <td>{{v.name}}</td>
@@ -32,8 +32,8 @@
 
 
                 <td>
-                    <a>Detail</a> |
-                    <a>Edit</a>
+                    <a routerLink="/vendors/detail/{{v.id}}">Detail</a> |
+                    <a routerLink="/vendors/edit/{{v.id}}">Edit</a>
                 </td>
             </tr>
         </tbody>

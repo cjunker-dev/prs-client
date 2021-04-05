@@ -23,6 +23,7 @@ import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.comp
 import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
 import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 import { VendorDeleteComponent } from './vendor/vendor-delete/vendor-delete.component';
+import { SearchVendorPipe } from './vendor/search-vendor.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { VendorDeleteComponent } from './vendor/vendor-delete/vendor-delete.comp
     VendorDetailComponent,
     VendorCreateComponent,
     VendorEditComponent,
-    VendorDeleteComponent
+    VendorDeleteComponent,
+    SearchVendorPipe
   ],
   imports: [
     BrowserModule,
