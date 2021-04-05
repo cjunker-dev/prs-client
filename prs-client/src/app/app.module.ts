@@ -18,6 +18,11 @@ import { RequestComponent } from './request/request.component';
 import { LineItemComponent } from './line-item/line-item.component';
 import { BoolDisplayPipe } from './bool-display.pipe';
 import { SearchUserPipe } from './user/search-user.pipe';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+import { VendorDeleteComponent } from './vendor/vendor-delete/vendor-delete.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +36,17 @@ import { SearchUserPipe } from './user/search-user.pipe';
     UserEditComponent,
     UserDetailComponent,
     UserCreateComponent,
+    UserLoginComponent,
     VendorComponent,
     RequestComponent,
     LineItemComponent,
     BoolDisplayPipe,
-    SearchUserPipe
+    SearchUserPipe,
+    VendorListComponent,
+    VendorDetailComponent,
+    VendorCreateComponent,
+    VendorEditComponent,
+    VendorDeleteComponent
   ],
   imports: [
     BrowserModule,
