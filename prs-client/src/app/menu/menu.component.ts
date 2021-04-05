@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
     {display: 'Home', route: '/home'},
     {display: 'Users', route: '/users/list'},
     {display: 'Vendors', route: '/vendors/list'},
-//products
+    {display: 'Products', route: '/products/list'},
 //requests
 //lineitems
 //re views

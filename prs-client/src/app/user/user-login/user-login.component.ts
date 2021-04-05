@@ -28,6 +28,7 @@ login(): void {
     },
     err => {
       console.error(err);
+      this.message = "Username / password is not valid.";
     }
   );
 }
