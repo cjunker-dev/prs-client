@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Vendor } from 'src/app/vendor/vendor';
 import { VendorService } from 'src/app/vendor/vendor.service';
 import { Product } from '../product';
@@ -16,8 +16,8 @@ export class ProductDetailComponent implements OnInit {
   showVerify: Boolean = false;
   constructor(
     private pdtsvc: ProductService,
-    private route: ActivatedRoute
-
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,10 +38,18 @@ export class ProductDetailComponent implements OnInit {
   }
 
   edit(): void {
-
+    this.router.navigateByUrl(`/products/edit/${this.id}`);
   }
 
   delete(): void {
-    
+    this.pdtsvc.delete(this.product).subscribe(
+      res => {
+        console.log("user deleted:", res);
+        this.router.navigateByUrl('/products/list');
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 }

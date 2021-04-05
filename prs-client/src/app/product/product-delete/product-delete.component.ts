@@ -11,5 +11,5 @@ export class ProductDeleteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }
