@@ -14,7 +14,8 @@ loggedInUser: User = null;
 
   validateLogin(loggedInUser){
     if (this.loggedInUser == null){
-    this.router.navigateByUrl('/login');
+    //this.router.navigateByUrl('/login');
+    console.warn("Check for login disabled!!");
    }
   }
   
