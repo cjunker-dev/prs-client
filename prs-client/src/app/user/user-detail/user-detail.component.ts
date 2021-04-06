@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemService } from 'src/app/system.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -17,11 +18,12 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private usrsvc: UserService,
     private route: ActivatedRoute,
-    private router: Router
-
+    private router: Router,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.id = this.route.snapshot.params.id;
     this.usrsvc.get(+this.id).subscribe(
       res => {

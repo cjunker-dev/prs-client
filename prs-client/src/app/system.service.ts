@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './user/user';
 
 @Injectable({
@@ -6,5 +7,20 @@ import { User } from './user/user';
 })
 export class SystemService {
 loggedInUser: User = null;
-  constructor() { }
+
+  constructor(
+    private router: Router
+  ) { }
+
+  validateLogin(loggedInUser){
+    if (this.loggedInUser == null){
+    this.router.navigateByUrl('/login');
+   }
+  }
+  
 }
+
+
+
+
+

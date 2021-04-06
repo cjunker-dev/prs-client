@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/system.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -12,10 +13,12 @@ export class UserListComponent implements OnInit {
   searchCriteria: string = '';
 
   constructor(
-    private usrsvc: UserService
+    private usrsvc: UserService,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.usrsvc.list().subscribe(
       res => {
         console.log("Users:", res);

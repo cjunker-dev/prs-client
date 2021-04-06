@@ -1,9 +1,8 @@
 <app-menu></app-menu>
-<p>product-list works!</p>
 <div>
     <h3>Product List</h3>
     <a routerLink="/products/create">Create a Product</a> |
-    <input type="text" placeholder="Search">
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
     <table class="table table-sm table-striped">
         <thead>
             <tr>
@@ -18,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of products">
+            <tr *ngFor="let p of products | searchProduct: searchCriteria">
                 <td>{{p.id}}</td>
                 <td>{{p.vendor.name}}</td>
                 <td>{{p.partNumber}}</td>

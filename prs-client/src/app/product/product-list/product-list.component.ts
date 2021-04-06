@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/system.service';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -9,11 +10,15 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
+  searchCriteria: string = "";
+  
   constructor(
-    private pdtsvc: ProductService
+    private pdtsvc: ProductService,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.pdtsvc.list().subscribe(
       res => {
         console.log("Products:", res);

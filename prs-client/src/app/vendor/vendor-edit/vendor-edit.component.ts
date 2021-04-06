@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemService } from 'src/app/system.service';
 import { Vendor } from '../vendor';
 import { VendorService } from '../vendor.service';
 
@@ -15,10 +16,12 @@ export class VendorEditComponent implements OnInit {
   constructor(
     private vdrsvc: VendorService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     let id = this.route.snapshot.params.id;
     this.vdrsvc.get(+id).subscribe(
       res => {

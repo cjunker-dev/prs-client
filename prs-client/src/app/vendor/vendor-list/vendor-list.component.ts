@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/system.service';
 import { Vendor } from '../vendor';
 import { VendorService } from '../vendor.service';
 
@@ -13,10 +14,12 @@ export class VendorListComponent implements OnInit {
   searchCriteria: string = '';
 
   constructor(
-    private vdrsvc: VendorService
+    private vdrsvc: VendorService,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.vdrsvc.list().subscribe(
       res => {
         console.log("Vendors:", res);

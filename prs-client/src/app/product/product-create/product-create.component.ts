@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemService } from 'src/app/system.service';
 import { Vendor } from 'src/app/vendor/vendor';
 import { VendorService } from 'src/app/vendor/vendor.service';
 import { Product } from '../product';
@@ -16,10 +17,12 @@ export class ProductCreateComponent implements OnInit {
   constructor(
     private vdrsvc: VendorService,
     private pdtsvc: ProductService,
-    private router: Router
+    private router: Router,
+    private sys: SystemService
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.vdrsvc.list().subscribe(
       res => {
         console.log("Vendor list:", res);

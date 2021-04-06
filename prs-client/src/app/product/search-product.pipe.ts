@@ -7,9 +7,9 @@ import { Product } from './product';
 export class SearchProductPipe implements PipeTransform {
 
   transform(products: Product[], searchCriteria): Product[] {
-    if(products ==null || searchCriteria == null || searchCriteria=='')return products;
+    if(products == null || searchCriteria == null || searchCriteria== '')return products;
 
-    let selectedProducts: Product[] = null;
+    let selectedProducts: Product[] = [];
     searchCriteria = searchCriteria.toLowerCase();
     for (let product of products){
       if (
