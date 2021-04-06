@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+<p>request-lines works!</p>
+
+<table class="table table-sm" *ngIf="request" >
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>User</th>
+        <th>Action</th>
+    </tr>
+    <tr >
+        <td><input [(ngModel)]="request.id" type="number" disabled></td>
+        <td><input [(ngModel)]="request.description" type="textarea" disabled></td>
+        <td><input [(ngModel)]="request.status" type="text" disabled></td>
+        <td><input [(ngModel)]="request.total" disabled></td>
+        <td><input  [(ngModel)]="request.user.username" *ngIf="request.user" type="text" disabled></td>
+        <td><a>Review</a></td>
+    </tr>
+    
+</table>

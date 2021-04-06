@@ -5,10 +5,10 @@ export class Request {
     user: User = new User();
     description: string = '';
     justification: string = '';
-    dateNeeded: Date;
+    dateNeeded: string = (new Date()).toISOString().substring(0,10);
     deliveryMethod: string = '';
-    status: string = '';
+    status: string = 'NEW';
     total: number = 0;
-    submittedDate: Date;
+    submittedDate: string = (new Date()).toISOString();
     reasonForRejection: string = '';
 }
