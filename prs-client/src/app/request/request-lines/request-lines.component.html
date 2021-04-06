@@ -1,6 +1,5 @@
 <app-menu></app-menu>
-<p>request-lines works!</p>
-
+<h3>Request Lines</h3>
 <table class="table table-sm" *ngIf="request" >
     <tr>
         <th>Id</th>
@@ -19,4 +18,34 @@
         <td><a>Review</a></td>
     </tr>
     
+</table>
+<hr>
+<h4>Request Lines</h4><a routerLink="/requests/lines/create">Create</a>
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Line Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let l of lineItems">
+            <td>{{l.id}}</td>
+            <td>{{l.product.name}}</td>
+            <td>{{l.quantity}}</td>
+            <td>{{l.product.price}}</td>
+            <td>{{l.request.total}}</td>
+
+
+
+            <td>
+                <a routerLink="/requests/lines/edit/{{l.id}}">Edit</a> | 
+                <a routerLink="/requests/lines/{{l.id}}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
 </table>

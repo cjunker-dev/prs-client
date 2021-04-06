@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SystemService } from 'src/app/system.service';
 import { Request } from '../request'; 
 import { RequestService } from '../request.service';
+import { LineItem } from './request-lines';
+import { RequestLinesService } from './request-lines.service';
 
 @Component({
   selector: 'app-request-lines',
@@ -12,11 +14,13 @@ import { RequestService } from '../request.service';
 export class RequestLinesComponent implements OnInit {
   request: Request = new Request();
   id: number = 0;
-  //list array of requiest lines
+  lineItems: LineItem[];
+  //list array of request lines
   constructor(
     private route: ActivatedRoute,
     private rqtsvc: RequestService,
-    private sys: SystemService
+    private sys: SystemService,
+    private lisvc: RequestLinesService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +35,15 @@ export class RequestLinesComponent implements OnInit {
         console.error(err);
       }
     );
+    this.lisvc.listByRequestId(this.id).subscribe(
+      res => {
+        console.log("Line items for request id: ", res);
+        this.lineItems = res;
+      }
+    );
+
+  
   }
+  
 
 }
