@@ -15,6 +15,8 @@ export class RequestLinesEditComponent implements OnInit {
   lineItem: LineItem;
   id: number = 0;
   products: Product[];
+  requestId: number = 0;
+
   constructor(
     private sys: SystemService,
     private router: Router,
@@ -24,7 +26,10 @@ export class RequestLinesEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
     this.id = this.route.snapshot.params.id;
+    //store id for request?
+    
     this.pdtsvc.list().subscribe(
       res => {
         console.log("Products:", res);
@@ -49,7 +54,8 @@ export class RequestLinesEditComponent implements OnInit {
       res => {
         console.log("New lineitem:", res);
         this.lineItem = res;
-        this.router.navigateByUrl('/requests/lines');
+        this.requestId = this.lineItem.request.id;
+        this.router.navigateByUrl(`/requests/lines/${this.requestId}`);
       }
     );
   }

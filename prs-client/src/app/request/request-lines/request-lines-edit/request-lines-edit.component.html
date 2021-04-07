@@ -12,7 +12,7 @@
             <td><input [(ngModel)]="lineItem.id" type="number" disabled></td>
         </tr>
         <tr >
-            <th>Vendor</th>
+            <th>Product</th>
             <select [(ngModel)]="lineItem.product" [compareWith]="compFn">
                 <option *ngFor="let product of products" [ngValue]='product'>{{product.name}}</option>
             </select>
