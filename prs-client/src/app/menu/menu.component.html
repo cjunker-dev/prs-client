@@ -3,5 +3,6 @@
         <li *ngFor="let m of menus">
             <a routerLink="{{m.route}}">{{m.display}}</a>
         </li>
+        <li style="float:right;" *ngIf="username"><a>Hello, {{username}}</a></li>
     </ul>
 </nav>

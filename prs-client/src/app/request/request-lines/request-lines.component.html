@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>Request Lines</h3>
-<table class="table table-sm" *ngIf="request" >
+<!-- <table class="table table-sm" *ngIf="request" >
     <tr>
         <th>Id</th>
         <th>Description</th>
@@ -18,8 +18,32 @@
         <td><a>Review</a></td>
     </tr>
     
+</table> -->
+<table class="table ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="request">
+            <td>{{request.id}}</td>
+            <td>{{request.user.username}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.status}}</td>
+            <td>{{request.total}}</td>
+            <td>
+                <button class="btn btn-link" (click)="submit()">Review</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
-<hr>
+
 <h4>Request Lines</h4><a routerLink="/requests/lines/create/{{request.id}}">Create</a>
 <table class="table table-sm table-striped">
     <thead>
@@ -44,7 +68,7 @@
 
             <td>
                 <a routerLink="/requests/lines/edit/{{l.id}}">Edit</a> | 
-                <a (click)="delete(l.id)">Delete</a>
+                <button class="btn btn-link"(click)="delete(l)">Delete</button>
             </td>
         </tr>
     </tbody>

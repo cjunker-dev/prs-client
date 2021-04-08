@@ -24,9 +24,7 @@ export class RequestLinesComponent implements OnInit {
     private lisvc: RequestLinesService,
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-    this.sys.validateLogin(this.sys.loggedInUser);
+    refresh(): void {
     this.id = this.route.snapshot.params.id;
     this.rqtsvc.get(this.id).subscribe(
       res => {
@@ -43,22 +41,20 @@ export class RequestLinesComponent implements OnInit {
         this.lineItems = res;
       }
     );
+    }
+
+    
+  ngOnInit(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
+    this.refresh();
   }
-  delete(id): void {
-    console.log("ID passed in:",id);
-    //find lineitem by id
-    this.lisvc.get(id).subscribe(
-      res => {
-        console.log("request from ID", res);
-        this.lineItem = res;
-      },
-      err => {
-        console.error(err);
-      }
-    );
-    this.lisvc.delete(this.lineItem).subscribe(
+  delete(lineItem): void {
+   
+    this.lisvc.delete(lineItem).subscribe(
       res => {
         console.log("Line item delete:", res);
+        this.refresh();
+
       },
       err => {
         console.error(err);
@@ -66,16 +62,16 @@ export class RequestLinesComponent implements OnInit {
     );
   }
   submit(): void {
-    this.request.status = 'Review';
-    this.rqtsvc.edit(this.request).subscribe(
+    this.rqtsvc.submitReview(this.request).subscribe(
       res => {
         console.log("Request submitted for review:", res);
         this.request = res;
+        this.refresh();
+        this.router.navigateByUrl('/requests/list');
       },
       err => {
         console.error(err);
       }
     );
-    this.router.navigateByUrl('/requests/list');
   }
 }

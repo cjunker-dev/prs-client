@@ -24,6 +24,7 @@ import { RequestLinesComponent } from './request/request-lines/request-lines.com
 import { RequestLinesEditComponent } from './request/request-lines/request-lines-edit/request-lines-edit.component';
 import { RequestLinesCreateComponent } from './request/request-lines/request-lines-create/request-lines-create.component';
 import { ReviewListComponent } from './review/review-list/review-list.component';
+import { ReviewApproveComponent } from './review/review-approve/review-approve.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: 'requests/lines/edit/:id', component: RequestLinesEditComponent},
   {path: 'requests/lines/create/:reqId', component: RequestLinesCreateComponent},
   { path: 'reviews/list', component: ReviewListComponent},
+  { path: 'reviews/detail/:id', component: ReviewApproveComponent},
   {path: 'about', component: AboutComponent},
   {path: 'help', component: HelpComponent},
   { path: 'login', component: UserLoginComponent},

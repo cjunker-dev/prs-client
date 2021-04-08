@@ -28,14 +28,15 @@ export class ReviewListComponent implements OnInit {
         console.error(err);
       }
     );
-    var r:any;
-    for (r in this.requests){
-      if (r.user.username !== this.sys.loggedInUser.username){
-        console.log("user match");
-        this.filteredRequests.push(r);
+    this.rqtsvc.getReview(this.sys.loggedInUser.id).subscribe(
+      res => {
+        console.log("filtered requests:", res);
+        this.filteredRequests = res;
+      },
+      err => {
+        console.error(err);
       }
-    }
-    console.log("Filtered list:", this.filteredRequests);
+    );
   }
 
 }

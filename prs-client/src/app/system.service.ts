@@ -7,16 +7,28 @@ import { User } from './user/user';
 })
 export class SystemService {
 loggedInUser: User = null;
+isAdmin: boolean = false;
+isReviewer: boolean = false;
 
   constructor(
     private router: Router
   ) { }
 
-  validateLogin(loggedInUser){
+  validateLogin(loggedInUser: User){
     if (this.loggedInUser == null){
-    //this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
     console.warn("Check for login disabled!!");
    }
+  }
+
+  validateCredentials(loggedInUser: User){
+    if (this.loggedInUser.isReviewer == true){
+      this.isReviewer = true;
+    }
+    if (this.loggedInUser.isAdmin == true){
+      this.isAdmin = true;
+    } 
+
   }
   
 }

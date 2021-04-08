@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<h3>Review Request</h3>
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="request">
+            <td>{{request.id}}</td>
+            <td>{{request.user.username}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.status}}</td>
+            <td>{{request.total}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Request Lines</h4><a routerLink="/requests/lines/create/{{request.id}}">Create</a>
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Line Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let l of lineItems">
+            <td>{{l.id}}</td>
+            <td>{{l.product.name}}</td>
+            <td>{{l.quantity}}</td>
+            <td>{{l.product.price}}</td>
+            <td>{{l.product.price * l.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" (click)="approve()">Approve</button> | 
+<button class="btn btn-danger"(click)="reject()">Reject</button> | 
+<input type="text" placeholder="Reason for rejection" *ngIf="showReasonForRejection" [(ngModel)]="request.reasonForRejection">
+<button class="btn btn-danger" *ngIf="showReasonForRejection" (click)="confirmReject()">Confirm Rejection</button>

@@ -4,7 +4,8 @@ nav {
 }
 li {
     display: inline-block;
-    
+    color: silver;
+
 }
 ul {
     margin:0;

@@ -24,7 +24,6 @@ export class RequestListComponent implements OnInit {
         console.log("Requests:", res);
         this.requests = res;
         //this.users=res as User[];
-
       },
       err => {
         console.error(err);

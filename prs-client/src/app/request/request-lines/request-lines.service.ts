@@ -36,5 +36,10 @@ export class RequestLinesService {
   delete(lineItem: LineItem): Observable<LineItem>{
     return this.http.delete(`${this.baseurl}${lineItem.id}`) as Observable<LineItem>
   }
+  //edit
+  recalculate(lineItem: LineItem): Observable<LineItem>{
+   return this.http.post(`${this.baseurl}`, lineItem) as Observable<LineItem>
+}
+  
 }
 
