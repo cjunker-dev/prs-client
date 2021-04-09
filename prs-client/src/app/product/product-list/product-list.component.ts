@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
 export class ProductListComponent implements OnInit {
   products: Product[];
   searchCriteria: string = "";
-  
+  isAdmin: boolean = false;
   constructor(
     private pdtsvc: ProductService,
     private sys: SystemService
@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.isAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
     this.pdtsvc.list().subscribe(
       res => {
         console.log("Products:", res);

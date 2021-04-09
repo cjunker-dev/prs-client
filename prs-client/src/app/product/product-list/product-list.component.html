@@ -1,7 +1,10 @@
 <app-menu></app-menu>
 <div>
     <h3>Product List</h3>
-    <a routerLink="/products/create">Create a Product</a> |
+    <span *ngIf="isAdmin">
+        <a routerLink="/products/create">Create a Product</a> | 
+    </span>
+    
     <input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
     <table class="table table-sm table-striped">
         <thead>
@@ -29,8 +32,11 @@
 
 
                 <td>
-                    <a routerLink="/products/detail/{{p.id}}">Detail</a> |
-                    <a routerLink="/products/edit/{{p.id}}">Edit</a>
+                    <a routerLink="/products/detail/{{p.id}}">Detail</a>
+                    <span *ngIf="isAdmin">
+                         |
+                        <a routerLink="/products/edit/{{p.id}}">Edit</a>
+                    </span>
                 </td>
             </tr>
         </tbody>

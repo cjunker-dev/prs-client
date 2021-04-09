@@ -14,6 +14,7 @@ import { ProductService } from '../product.service';
 export class ProductDetailComponent implements OnInit {
   product: Product = new Product();
   id: number = 0;
+  isAdmin: boolean = false;
   showVerify: Boolean = false;
   constructor(
     private pdtsvc: ProductService,
@@ -24,6 +25,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.isAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
     this.id = this.route.snapshot.params.id;
     this.pdtsvc.get(+this.id).subscribe(
       res => {
