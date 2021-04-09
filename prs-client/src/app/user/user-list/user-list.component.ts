@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class UserListComponent implements OnInit {
   users: User[];
   searchCriteria: string = '';
-
+  isAdmin: boolean = false;
   constructor(
     private usrsvc: UserService,
     private sys: SystemService
@@ -19,6 +19,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.isAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
     this.usrsvc.list().subscribe(
       res => {
         console.log("Users:", res);

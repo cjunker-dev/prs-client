@@ -12,7 +12,7 @@ import { VendorService } from '../vendor.service';
 export class VendorListComponent implements OnInit {
   vendors: Vendor[];
   searchCriteria: string = '';
-
+  isAdmin: boolean = false;
   constructor(
     private vdrsvc: VendorService,
     private sys: SystemService
@@ -20,6 +20,7 @@ export class VendorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.isAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
     this.vdrsvc.list().subscribe(
       res => {
         console.log("Vendors:", res);

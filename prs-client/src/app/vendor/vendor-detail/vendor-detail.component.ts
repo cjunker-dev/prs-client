@@ -13,6 +13,7 @@ export class VendorDetailComponent implements OnInit {
   vendor: Vendor = null;
   id: number = 0;
   showVerify: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     private vdrsvc: VendorService,
@@ -23,6 +24,7 @@ export class VendorDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.sys.validateAdmin(this.sys.loggedInUser);
     this.id = this.route.snapshot.params.id;
     this.vdrsvc.get(+this.id).subscribe(
       res => {

@@ -6,7 +6,7 @@ import { User } from './user/user';
   providedIn: 'root'
 })
 export class SystemService {
-loggedInUser: User = null;
+loggedInUser: User = new User();
 isAdmin: boolean = false;
 isReviewer: boolean = false;
 
@@ -16,18 +16,16 @@ isReviewer: boolean = false;
 
   validateLogin(loggedInUser: User){
     if (this.loggedInUser == null){
-    this.router.navigateByUrl('/login');
+    //this.router.navigateByUrl('/login');
     console.warn("Check for login disabled!!");
    }
   }
 
-  validateCredentials(loggedInUser: User){
-    if (this.loggedInUser.isReviewer == true){
-      this.isReviewer = true;
-    }
-    if (this.loggedInUser.isAdmin == true){
-      this.isAdmin = true;
-    } 
+  validateAdmin(loggedInUser: User){
+    return (this.loggedInUser.isAdmin);
+  }
+  validateReviewer(loggedInUser: User){
+    return (this.loggedInUser.isReviewer);
 
   }
   

@@ -43,7 +43,7 @@
         </tr>
     </tbody>
 </table>
-<button class="btn btn-primary" (click)="approve()">Approve</button> | 
+<button class="btn btn-success" (click)="approve()">Approve</button> | 
 <button class="btn btn-danger"(click)="reject()">Reject</button> | 
 <input type="text" placeholder="Reason for rejection" *ngIf="showReasonForRejection" [(ngModel)]="request.reasonForRejection">
 <button class="btn btn-danger" *ngIf="showReasonForRejection" (click)="confirmReject()">Confirm Rejection</button>

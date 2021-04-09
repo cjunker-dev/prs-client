@@ -14,6 +14,8 @@ export class UserDetailComponent implements OnInit {
   user: User = null;
   id: number = 0;
   showVerify: boolean = false;
+  isAdmin: boolean = false;
+  isNotAdmin: boolean = true;
 
   constructor(
     private usrsvc: UserService,
@@ -24,6 +26,8 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.validateLogin(this.sys.loggedInUser);
+    this.isAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
+    this.isNotAdmin = this.sys.validateAdmin(this.sys.loggedInUser);
     this.id = this.route.snapshot.params.id;
     this.usrsvc.get(+this.id).subscribe(
       res => {
