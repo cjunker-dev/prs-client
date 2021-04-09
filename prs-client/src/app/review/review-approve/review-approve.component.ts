@@ -16,7 +16,7 @@ export class ReviewApproveComponent implements OnInit {
   id: number = 0;
   lineItems: LineItem[];
   showReasonForRejection:boolean = false;
-
+  isReviewer: boolean = false;
   constructor(
     private rqtsvc: RequestService,
     private sys: SystemService,
@@ -25,6 +25,8 @@ export class ReviewApproveComponent implements OnInit {
     private lisvc: RequestLinesService
   ) { }
   approve(): void {
+    this.sys.validateLogin(this.sys.loggedInUser);
+    this.isReviewer = this.sys.validateReviewer(this.sys.loggedInUser);
     console.log("B4:", this.request);
     this.rqtsvc.approve(this.request).subscribe(
       res => {

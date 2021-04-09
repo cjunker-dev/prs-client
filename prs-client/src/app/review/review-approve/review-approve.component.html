@@ -22,7 +22,7 @@
     </tbody>
 </table>
 
-<h4>Request Lines</h4><a routerLink="/requests/lines/create/{{request.id}}">Create</a>
+<h4>Request Lines</h4>
 <table class="table table-sm table-striped">
     <thead>
         <tr>
@@ -43,7 +43,12 @@
         </tr>
     </tbody>
 </table>
-<button class="btn btn-success" (click)="approve()">Approve</button> | 
-<button class="btn btn-danger"(click)="reject()">Reject</button> | 
-<input type="text" placeholder="Reason for rejection" *ngIf="showReasonForRejection" [(ngModel)]="request.reasonForRejection">
-<button class="btn btn-danger" *ngIf="showReasonForRejection" (click)="confirmReject()">Confirm Rejection</button>
+<span *ngIf="isReviewer">
+    <button class="btn btn-success" (click)="approve()">Approve</button> | 
+<button class="btn btn-danger"(click)="reject()">Reject</button>
+<span *ngIf="showReasonForRejection">
+    | 
+    <input type="text" placeholder="Reason for rejection"  [(ngModel)]="request.reasonForRejection"> | 
+    <button class="btn btn-danger" (click)="confirmReject()">Confirm Rejection</button>
+</span>
+</span>
